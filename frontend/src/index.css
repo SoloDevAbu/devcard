@@ -11,7 +11,7 @@
   --font-code: "Source Code Pro", monospace;
   --font-grotesk: "Space Grotesk", sans-serif;
   color-scheme: dark;
-background: radial-gradient(circle, #181a1f, black);
+background: radial-gradient(circle, #8159d4, #d5408d);
 }
 
 * {
