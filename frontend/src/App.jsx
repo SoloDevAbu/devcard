@@ -1,9 +1,15 @@
 import React from 'react'
-import Card from './components/Card'
+import UserInput from './components/UserInput'
+import Footer from './components/Footer'
+import UserCard from './components/UserCard'
 
 const App = () => {
   return (
-    <Card/>
+    <div>
+      <UserInput/>
+      <Footer/>
+      <UserCard/>
+    </div>
   )
 }
 
