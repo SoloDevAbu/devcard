@@ -25,8 +25,17 @@ const UserInput = () => {
             const { data: info } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/info/${username}`);
             const { name, avatar } = info;
 
-            const { data: badgesData } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/badges/${username}`);
-            const { badges } = badgesData;
+            let badges = [];
+            try {
+                const { data: badgesData } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/badges/${username}`);
+                badges = badgesData.badges || [];
+            } catch (err) {
+                if (err.response && err.response.status === 404) {
+                    badges = [];
+                } else {
+                    throw err;
+                }
+            }
 
             setUserData({
                 name,
@@ -42,17 +51,17 @@ const UserInput = () => {
             });
         } catch (err) {
             setError(err.response?.data?.message || "User not found or API error");
-          } finally {
+        } finally {
             setLoading(false);
-          }
+        }
     };
     return (
-        <div className="py-16 flex justify-center items-center">
+        <div className="py-16 flex flex-col justify-center items-center pb-40">
             <div className=" aspect-square max-w-96 max-h-96 bg-color-cardbg pt-14 pb-5 mx-auto px-4 text-center rounded-lg">
                 <h1 className="text-4xl font-sans font-bold pb-10 bg-clip-text text-transparent bg-gradient-to-r from-[#8159d4] to-[#d5408d]">Dev Card</h1>
                 <h3 className="text-xl font-sans">Generate your LeetCode Card!</h3>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     placeholder="Enter your LeetCode username"
                     value={username}
                     id="username"
@@ -67,22 +76,24 @@ const UserInput = () => {
                 <p className="text-center text-gray-500 font-sans text-sm pt-8">Become the first to generate a Card</p>
             </div>
 
-            {userData && (
-                <div className='mt-8'>
-                    <UserCardImage 
-                        name={userData.name}
-                        username={userData.username}
-                        profile={userData.avatar}
-                        reputation={userData.reputation}
-                        rank={userData.ranking}
-                        totalSolved={userData.totalSolved}
-                        easySolved={userData.easySolved}
-                        mediumSolved={userData.mediumSolved}
-                        hardSolved={userData.hardSolved}
-                        badges={userData.badges}
-                    />
-                </div>
-            )}
+            <div className='aspect-[5/4] w-full mx-auto px-5 py-4 mt-8' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
+                {userData && (
+                    <div className='mt-8'>
+                        <UserCardImage
+                            name={userData.name}
+                            username={userData.username}
+                            profile={userData.avatar}
+                            reputation={userData.reputation}
+                            rank={userData.ranking}
+                            totalSolved={userData.totalSolved}
+                            easySolved={userData.easySolved}
+                            medSolved={userData.mediumSolved}
+                            hardSolved={userData.hardSolved}
+                            badges={userData.badges}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
