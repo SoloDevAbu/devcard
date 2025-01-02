@@ -3,8 +3,8 @@ const { getUserProfile, getUserProfileInfo, getUserProfileBadges, createUser } =
 const router = Router();
 
 router.get('/userProfile/:username', getUserProfile);
-router.get('/api/userProfile/info/:username', getUserProfileInfo);
-router.get('api/userProfile/badges/:username', getUserProfileBadges);
-router.post('api/user', createUser);
+router.get('/userProfile/info/:username', getUserProfileInfo);
+router.get('/userProfile/badges/:username', getUserProfileBadges);
+router.post('/user', createUser);
 
 module.exports = router;
