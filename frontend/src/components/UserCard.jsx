@@ -4,7 +4,7 @@ import Download from './Download'
 
 const UserCard = () => {
   return (
-    <div className='px-32 py-6 md:px-56 lg:px-72'>
+    <div className='px-32 py-6'>
         <UserCardImage/>
         <Download/>
     </div>
