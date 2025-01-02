@@ -30,15 +30,11 @@ const UserInput = () => {
                 const { data: badgesData } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/badges/${username}`);
                 await axios.post(`https://devcard-wcnh.onrender.com/api/user`, {
                     username,
-                    name,
                     avatar,
-                    ranking,
-                    reputation,
                     totalSolved,
                     easySolved,
                     mediumSolved,
                     hardSolved,
-                    badges: badges.slice(0, 10),
                 });
                 badges = badgesData.badges || [];
             } catch (err) {

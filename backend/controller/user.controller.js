@@ -59,14 +59,15 @@ const createUser = async (req, res) => {
     try {
         const user = await User.findOne({username});
 
-        if(user) {
-            return res.status(400).json({message: "User already exists."});
+        if(!user) {
+            const newUser = await User.create({username});
         }
-
-        const newUser = await User.create({username});
+        res.status(200).json({
+            message: "User created successfully"
+        })
     } catch (error) {
         res.status(500).json({
-            error: error.message
+            error: 'Fatching some problem while creating'
         })
     }
 }
