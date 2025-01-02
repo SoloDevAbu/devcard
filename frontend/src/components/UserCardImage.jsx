@@ -1,7 +1,7 @@
 import lcLogo from '../assets/Leetcode.png'
 import logo from '../assets/coding.png'
 
-const UserCardImage = ({ name, username, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, badges = [] }) => {
+const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, badges = [] }) => {
     return (
         <div className='aspect-[5/4] w-full mx-auto bg-neutral-900 rounded-xl px-5 py-4' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
 
@@ -21,7 +21,7 @@ const UserCardImage = ({ name, username, rank, reputation, totalSolved, easySolv
             <div className="flex justify-between py-2 gap-4">
                 {/* Profile Info */}
                 <div className="flex flex-col items-center">
-                    <img src={logo} alt="User" className="h-28 w-28 rounded-full" />
+                    <img src={profile} alt="User" className="h-28 w-28 rounded-full" />
                     <h1 className="text-2xl">{name}</h1>
                     <p className="text-sm">{username}</p>
                 </div>
