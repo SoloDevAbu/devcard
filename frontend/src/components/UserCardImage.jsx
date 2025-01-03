@@ -1,7 +1,7 @@
 import lcLogo from '../assets/Leetcode.png'
 import logo from '../assets/coding.png'
 
-const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, badges = [] }) => {
+const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, badges}) => {
     return (
         <div className='aspect-[5/4] w-full mx-auto bg-neutral-900 rounded-xl px-5 py-4' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
 
