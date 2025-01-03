@@ -1,7 +1,15 @@
 import lcLogo from '../assets/Leetcode.png'
 import logo from '../assets/coding.png'
+// const skillTags = [
+//     { name: 'Java' },
+//     { name: 'DSA' },
+//     { name: 'Web Dev' },
+//     { name: "javascript" },
+//     { name: "React" },
+//     { name: "Python" },
+// ];
 
-const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, badges}) => {
+const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved, easySolved, medSolved, hardSolved, skillTags }) => {
     return (
         <div className='aspect-[5/4] w-full mx-auto bg-neutral-900 rounded-xl px-5 py-4' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
 
@@ -55,26 +63,28 @@ const UserCardImage = ({ name, username, profile, rank, reputation, totalSolved,
             <div className="flex gap-4">
                 {/* Rank & Reputation */}
                 <div className="bg-neutral-800 flex flex-col items-center rounded-lg p-2">
-                    <div className="bg-neutral-700 rounded-lg px-4 py-2 mb-2">
+                    <div className="bg-neutral-700 rounded-lg px-4 py-2 mb-2 text-center">
                         <h1 className="text-sm">Rank</h1>
                         <p className="text-lg font-semibold">{rank}</p>
                     </div>
-                    <div className="bg-neutral-700 rounded-lg px-4 py-2">
+                    <div className="bg-neutral-700 rounded-lg px-4 py-2 text-center">
                         <h1 className="text-sm">Reputation</h1>
                         <p className="text-lg font-semibold">{reputation}</p>
                     </div>
                 </div>
 
-                {/* Badges */}
+                {/* SkillTags */}
                 <div className="flex-1 bg-neutral-800 rounded-lg p-2">
-                    <h1 className="text-center">Badges</h1>
-                    <div className={`grid grid-cols-${badges.length >= 5 ? 5 : badges.length} gap-2 mt-2`}>
-                        {badges.length > 0 ? (
-                            badges.map((badge, index) => (
-                                <img src={badge} alt={`Badge ${index}`} className="h-10 w-10" key={index} />
+                    <h1 className="text-center">Skills</h1>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                        {skillTags.length > 0 ? (
+                            skillTags.map((skill, index) => (
+                                <div key={index} className="bg-neutral-700 rounded-lg p-2 text-center">
+                                    <p className="text-sm font-semibold">{skill.name}</p>
+                                </div>
                             ))
-                        ) : (
-                            <p className="text-center w-full">No Badges</p>
+                         ) : (
+                            <p className="text-center w-full">Nothing to Show</p>
                         )}
                     </div>
                 </div>

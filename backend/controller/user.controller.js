@@ -6,7 +6,7 @@ const getUserProfile = async (req, res) => {
 
     try {
         const response = await axios.get(
-            `https://alfa-leetcode-api.onrender.com/userProfile/${username}`
+            `https://alfa-leetcode-api.onrender.com/${username}/solved`
         );
         res.status(200).json(response.data);
     } catch (err) {

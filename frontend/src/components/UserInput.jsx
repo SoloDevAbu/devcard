@@ -20,18 +20,17 @@ const UserInput = () => {
 
         try {
             const { data: questionsSolved } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/${username}`);
-            const { totalSolved, easySolved, mediumSolved, hardSolved, ranking, reputation } = questionsSolved;
+            const { solvedProblem, easySolved, mediumSolved, hardSolved } = questionsSolved;
 
             const { data: info } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/info/${username}`);
-            const { name, avatar } = info;
+            const { name, avatar, ranking, reputation, skillTags } = info;
 
             let badges = [];
             try {
-                const { data: badgesData } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/badges/${username}`);
                 await axios.post(`https://devcard-wcnh.onrender.com/api/user/${username}`, {
                     username,
                     avatar,
-                    totalSolved,
+                    solvedProblem,
                     easySolved,
                     mediumSolved,
                     hardSolved,
@@ -50,12 +49,12 @@ const UserInput = () => {
                 username,
                 ranking,
                 reputation,
-                totalSolved,
+                solvedProblem,
                 easySolved,
                 mediumSolved,
                 hardSolved,
                 avatar,
-                badges: badges.slice(0, 10),
+                skillTags: skillTags.slice(0, 10),
             });
         } catch (err) {
             setError(err.response?.data?.message || "User not found or API error");
@@ -97,7 +96,7 @@ const UserInput = () => {
                             easySolved={userData.easySolved}
                             medSolved={userData.mediumSolved}
                             hardSolved={userData.hardSolved}
-                            badges={userData.badges}
+                            skillTags={userData.skillTags}
                         />
                     </div>
                 )}
