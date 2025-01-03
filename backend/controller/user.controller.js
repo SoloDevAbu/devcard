@@ -54,13 +54,13 @@ const getUserProfileBadges = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    const {username} = req.params;
+    const {username, avatar, totalSolved, easySolved, mediumSolved, hardSolved} = req.body;
 
     try {
         const user = await User.findOne({username});
 
         if(!user) {
-            const newUser = await User.create({username});
+            const newUser = await User.create({username, avatar, totalSolved, easySolved, mediumSolved, hardSolved});
         }
         res.status(200).json({
             message: "User created successfully"

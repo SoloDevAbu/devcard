@@ -28,7 +28,7 @@ const UserInput = () => {
             let badges = [];
             try {
                 const { data: badgesData } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/badges/${username}`);
-                await axios.post(`https://devcard-wcnh.onrender.com/api/user`, {
+                await axios.post(`https://devcard-wcnh.onrender.com/api/user/${username}`, {
                     username,
                     avatar,
                     totalSolved,
