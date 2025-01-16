@@ -83,8 +83,8 @@ const UserInput = () => {
                 <p className="text-center text-gray-500 font-sans text-sm pt-8">Become the first to generate a Card</p>
             </div>
 
-            <div className='aspect-[5/4] w-full mx-auto px-5 py-4 mt-8' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
-                {userData && (
+            {userData && (
+                <div className='aspect-[5/4] w-full mx-auto px-5 py-4 mt-8' style={{ maxWidth: '600px', maxHeight: '480px', position: 'relative' }}>
                     <div className='mt-8'>
                         <UserCardImage
                             name={userData.name}
@@ -99,8 +99,8 @@ const UserInput = () => {
                             skillTags={userData.skillTags}
                         />
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     )
 }
