@@ -25,7 +25,6 @@ const UserInput = () => {
             const { data: info } = await axios.get(`https://devcard-wcnh.onrender.com/api/userProfile/info/${username}`);
             const { name, avatar, ranking, reputation, skillTags } = info;
 
-            let badges = [];
             try {
                 await axios.post(`https://devcard-wcnh.onrender.com/api/user/${username}`, {
                     username,
@@ -35,13 +34,8 @@ const UserInput = () => {
                     mediumSolved,
                     hardSolved,
                 });
-                badges = badgesData.badges || [];
             } catch (err) {
-                if (err.response && err.response.status === 404) {
-                    badges = [];
-                } else {
-                    throw err;
-                }
+                throw err
             }
 
             setUserData({
